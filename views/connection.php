@@ -6,7 +6,7 @@ include('templates/header.php');
 <div class="p-3">
     <p class="h2 text-center">IDENTIFICATION</p>
     <div class="row justify-content-center">
-        <form class="col-lg-4 col-8 border border-danger rounded shadow p-4" method="get" action="">
+        <form class="col-lg-4 col-8 border border-danger rounded shadow p-4" method="post" action="">
             <div class="d-flex flex-column">
 
                 <label for="login">Identifiant

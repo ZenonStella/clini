@@ -2,8 +2,13 @@
 session_start();
 include('templates/header.php');
 ?> 
+<pre>
+    <?php 
+        print_r($_SESSION);
+    ?>
+</pre>
 <?php
-if (!isset($_SESSION['user'])) { ?>
+if (isset($_SESSION['user'])) { ?>
 <div class="p-3">
     <p class="h2 text-center">Bienvenue</p>
     <div class="row justify-content-evenly text-light py-5">
