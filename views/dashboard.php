@@ -1,6 +1,9 @@
 <?php
+session_start();
 include('templates/header.php');
-?>
+?> 
+<?php
+if (!isset($_SESSION['user'])) { ?>
 <div class="p-3">
     <p class="h2 text-center">Bienvenue</p>
     <div class="row justify-content-evenly text-light py-5">
@@ -16,7 +19,8 @@ include('templates/header.php');
         </div>
     </div>
 </div>
-
-<?php
+<?php } else {
+    header('Location: connection.php');
+}
 include('templates/footer.php');
 ?>
