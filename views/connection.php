@@ -7,6 +7,10 @@ session_start();
 require_once '../controllers/controller-connection.php';
 
 ?>
+
+<!-- Nous incluons le header -->
+<?php include('templates/header.php'); ?>
+
 <div class="p-3">
     <p class="h2 text-center">IDENTIFICATION</p>
     <div class="row justify-content-center">
