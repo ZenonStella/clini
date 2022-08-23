@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../controllers/controller-connection.php';
 
 include('templates/header.php');
