@@ -15,8 +15,36 @@
 
 <body class="d-flex flex-column min-vh-100">
 
+<<<<<<< HEAD
   <div class="p-5 bg-danger text-light ">
     <h1 class=" text-center ">Clinic LHP8</h1>
+=======
+    <div class="p-5 bg-danger text-light ">
+        <h1 class=" text-center ">Clinic LHP8</h1>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <?php if (isset($_SESSION['user'])) { ?>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="dashboard.php">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php">Deconnection</a>
+        </li>            
+        <?php } else { ?>
+             <li class="nav-item">
+             <a class="nav-link" href="connection.php">Connection</a>
+           </li>     
+       <?php } ?>
+
+    </div>
+>>>>>>> 5d4ed2a626fab76794f2306f72c8fa0435dc2241
   </div>
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">

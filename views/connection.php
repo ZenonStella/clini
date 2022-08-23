@@ -15,6 +15,7 @@ require_once '../controllers/controller-connection.php';
 <div class="p-3">
     <p class="h2 text-center">IDENTIFICATION</p>
     <div class="row justify-content-center">
+
         <!-- Nous manipulons des passwords, nous devons être en POST -->
         <form class="col-lg-4 col-8 border border-danger rounded shadow p-4" method="POST" action="">
 

@@ -3,7 +3,6 @@
 require_once '../config.php';
 require_once '../models/Database.php';
 
-
 // nous allons déclencher nos vérifications lors d'une request méthode POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -28,5 +27,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(count($errors) == 0){
 
     }
-
 }
