@@ -32,7 +32,7 @@ require_once '../controllers/controller-connection.php';
                 <input type="password" id="password" name="password">
             </div>
             <div class="text-center d-flex flex-column">
-                <span class="text-danger fst-italic default-span"><?= isset($errors['validate']) ? $errors['validate'] : '' ?></span>
+                <span class="text-danger fst-italic default-span"><?= isset($errors['connection']) ? $errors['connection'] : '' ?></span>
                 <button class="btn btn-danger">Se connecter</button>
             </div>
         </form>

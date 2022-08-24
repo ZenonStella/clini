@@ -25,8 +25,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // nous allons déclencher d'autres tests si c'est ok 
+    // nous allons déclencher des tests complémentaiers si les inputs sont remplis
     if (count($errors) == 0) {
+
+        // j'instancie un nouvel objet selon la class Users
+        $usersObj = new Users();
+
+        // vérification si le mail existe à l'aide de la méthode de l'objet checkIfMailExists
+        if($usersObj->checkIfMailExists($_POST['login'])){
+            header('Location: dashboard.php');
+        } else {
+            $errors['connection'] = 'Identifiant ou Mdp incorrect';
+        }
        
     }
 }
