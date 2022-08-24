@@ -75,10 +75,11 @@ class Users extends DataBase
         // une fois le mail récupéré, j'execute la requête à l'aide de la méthode ->execute()
         $query->execute();
 
-        // je stock dans $result les données récupèrées à l'aide de la méthode ->fetch()
-        $result = $query->fetch();
+        // je stock dans $result les données récupèrées à l'aide de la méthode ->fetchAll()
+        // afin de ne pas avoir d'erreur lorsque qu'on nous allons compter le tableau
+        $result = $query->fetchAll();
 
-        // je fais un test pour savoir si $result est vide
+        // je fais un count pour savoir si $result est vide
         if (count($result) != 0) {
             return true;
         } else {

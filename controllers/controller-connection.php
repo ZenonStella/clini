@@ -2,6 +2,8 @@
 
 require_once '../config.php';
 require_once '../models/Database.php';
+require_once '../models/Users.php';
+
 
 // nous allons déclencher nos vérifications lors d'une request méthode POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -9,22 +11,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // création d'un tableau d'erreurs
     $errors = [];
 
-    // vérification de l'input login
+    // vérification de l'input login si vide
     if (isset($_POST['login'])) {
         if (empty($_POST['login'])) {
             $errors['login'] = 'Identifiant obligatoire';
         }
     }
 
-    // vérification de l'input password
+    // vérification de l'input password si vide
     if (isset($_POST['password'])) {
         if (empty($_POST['password'])) {
             $errors['password'] = 'Mot de passe obligatoire';
         }
     }
 
-    // nous allons déclencher des tests dans la bdd
-    if(count($errors) == 0){
-
+    // nous allons déclencher d'autres tests si c'est ok 
+    if (count($errors) == 0) {
+       
     }
 }
