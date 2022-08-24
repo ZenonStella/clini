@@ -9,6 +9,8 @@ class DataBase
 
     /**
      * Fonction permettant de se connecter à la base de données
+     * 
+     * @return PDO
      */
     protected function connectDb()
     {
