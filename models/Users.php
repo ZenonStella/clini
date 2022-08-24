@@ -65,7 +65,7 @@ class Users extends DataBase
         // j'écris la requête me permettant d'aller chercher le mail dans la table users
         // je mets en place un marqueur nominatif :mail
         $sql = "SELECT `users_mail` FROM `users` WHERE `users_mail` = :mail";
-        
+
         // je prépare la requête que je stock dans $query à l'aide de la méthode ->prepare()
         $query = $pdo->prepare($sql);
 
@@ -85,5 +85,22 @@ class Users extends DataBase
         } else {
             return false;
         }
+    }
+    /**
+     * Fonction permettant de récupérer les infos presentes dan sla table users selon le mail reseigné 
+     *  
+     * @param string $mail : le mail user
+     * 
+     * @return array : tableau contenant les ifos du Users
+     */
+    public function getInfoUsers(string $mail): array
+    {
+        $pdo = parent::connectDb();
+        $sql = "SELECT * FROM users WHERE users_mail = :mail";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

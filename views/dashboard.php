@@ -1,11 +1,11 @@
 <?php
-
 session_start();
-
+if (!isset($_SESSION['user'])) {
+    header('location: connection.php');
+    exit;
+}
 ?>
-
 <?php include('templates/header.php'); ?>
-
 <div class="p-3">
     <p class="h2 text-center">Bienvenue</p>
     <div class="row justify-content-evenly text-light py-5">
@@ -20,11 +20,8 @@ session_start();
             </div>
         </div>
     </div>
-
     <div class="row justify-content-center">
         <a href="dashboard.php" class="btn btn-secondary mt-3 col-3">Deconnexion</a>
     </div>
-
 </div>
-
 <?php include('templates/footer.php'); ?>

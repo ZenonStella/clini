@@ -32,11 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usersObj = new Users();
 
         // vérification si le mail existe à l'aide de la méthode de l'objet checkIfMailExists
-        if($usersObj->checkIfMailExists($_POST['login'])){
-            header('Location: dashboard.php');
+        if ($usersObj->checkIfMailExists($_POST['login'])) {
+            $usersInfo = $usersObj->getInfoUsers($_POST['login']);
+            if (password_verify($_POST['password'], $usersInfo['users_password'])) {
+                var_dump($usersInfo);
+                $_SESSION['user'] = $usersInfo;
+                header('Location: dashboard.php');
+                exit;
+            } else {
+                $errors['connection'] = 'Identifiant ou Mdp incorrect';
+            }
         } else {
             $errors['connection'] = 'Identifiant ou Mdp incorrect';
         }
-       
     }
 }
