@@ -104,4 +104,13 @@ class Patient extends DataBase
 
         $query->execute();
     }
+
+    public function getAllPatients()
+    {
+        $pdo = parent::connectDb();
+        $sql = "SELECT * FROM `patients`";
+        $query = $pdo->query($sql);
+        $result = $query->fetchAll();
+        return $result;
+    }
 }

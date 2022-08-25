@@ -12,7 +12,7 @@ if (!isset($_SESSION['user'])) {
         <div class="col-lg-5 col-10 text-center">
             <div class="row justify-content-center">
                 <a class="col-lg-5 col-8 my-3 text-center p-3 mx-3 btn btn-danger text-decoration-none text-light" href="addPatient.php">Ajouter patient</a>
-                <a href="" class="text-decoration-none text-light col-lg-5 col-8 my-3 text-center p-3 mx-3 btn btn-danger">Gestion des patient</a>
+                <a href="listPatients.php" class="text-decoration-none text-light col-lg-5 col-8 my-3 text-center p-3 mx-3 btn btn-danger">Gestion des patient</a>
                 <a href="" class="text-decoration-none text-light col-lg-5 col-8 my-3 text-center p-3 mx-3 btn btn-danger">Ajouter rendez vous</a>
                 <a href="" class="text-decoration-none text-light col-lg-5 col-8 my-3 text-center p-3 mx-3 btn btn-danger">Gestion des rendez vous</a>
                 <a href="" class="text-decoration-none text-light col-lg-5 col-8 my-3 text-center p-3 mx-3 btn btn-danger">Ajouter spécialiste</a>
