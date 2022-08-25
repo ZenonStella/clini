@@ -5,6 +5,7 @@ if (!isset($_SESSION['user'])) {
 }
 require_once '../config.php';
 require_once '../models/Database.php';
+require_once '../models/Patients.php';
 
 // nous allons déclencher nos vérifications lors d'une request méthode POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -60,7 +61,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // nous allons déclencher des tests dans la bdd
     if (count($errors) == 0) {
+        $lastname = htmlspecialchars($_POST['lastname']);
+        $firstname = htmlspecialchars($_POST['firstname']);
+        $phoneNumber = htmlspecialchars($_POST['phoneNumber']);
+        $address = htmlspecialchars($_POST['address']);
+        $mail = htmlspecialchars($_POST['mail']);
+        $patientObj = new Patient();
+        $patientObj->addNewPatient($lastname, $firstname, $phoneNumber, $address, $mail);
+        header('Location: dashboard.php');
     }
 }

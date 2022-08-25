@@ -103,4 +103,5 @@ class Users extends DataBase
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
 }
