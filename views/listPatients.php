@@ -18,12 +18,12 @@ include('templates/header.php');
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($patients as $value) { ?>
+                    <?php foreach ($patients as $patient) { ?>
                         <tr>
-                            <th scope="row"><?= $value['patients_id'] ?></th>
-                            <td><?= $value['patients_lastname']?></td>
-                            <td><?= $value['patients_firstname']?></td>
-                            <td><?= $value['patients_mail']?></td>
+                            <th scope="row"><?= $patient['patients_id'] ?></th>
+                            <td><?= $patient['patients_lastname']?></td>
+                            <td><?= $patient['patients_firstname']?></td>
+                            <td><?= $patient['patients_mail']?></td>
                             <td><a href="" class="btn btn-warning btn-sm">+ d'info</a></td>
                         </tr>
                     <?php } ?>
