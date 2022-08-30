@@ -86,7 +86,7 @@ class Doctors extends DataBase
     public function getAlldoctors()
     {
         $pdo = parent::connectDb();
-        $sql = "SELECT * FROM `doctors`";
+        $sql = "SELECT * FROM doctors INNER JOIN medicalspecialities ON doctors.medicalspecialities_id_medicalspecialities = medicalspecialities.medicalspecialities_id";
         $query = $pdo->query($sql);
         $result = $query->fetchAll();
         return $result;

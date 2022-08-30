@@ -14,6 +14,7 @@ include('templates/header.php');
                         <th scope="col">Nom</th>
                         <th scope="col">Prénom</th>
                         <th scope="col">Mail</th>
+                        <th scope="col">Spécialité</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -24,7 +25,12 @@ include('templates/header.php');
                             <td><?= $doctor['doctors_lastname']?></td>
                             <td><?= $doctor['doctors_name']?></td>
                             <td><?= $doctor['doctors_mail']?></td>
-                            <td><a href="" class="btn btn-warning btn-sm">+ d'info</a></td>
+                            <td><?= $doctor['medicalspecialities_name']?></td>
+                            <td>
+                                <a href="doctors.php?action=1&id=<?= $doctor['doctors_id'] ?>" class="btn btn-warning btn-sm">+ d'info</a>
+                                <a href="doctors.php?action=2&id=<?= $doctor['doctors_id'] ?>" class="btn btn-primary btn-sm">Modifier</a>
+                                <a href="doctors.php?action=3&id=<?= $doctor['doctors_id'] ?>" class="btn btn-danger btn-sm">Suprrimer</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>

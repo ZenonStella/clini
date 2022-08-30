@@ -139,4 +139,35 @@ class Meets extends DataBase
         $result = $query->fetchAll();
         return $result;
     }
+    
+    public function getAOneMeets(int $meet)
+    {
+        $pdo = parent::connectDb();
+        $sql = "SELECT * FROM rendezvous 
+        INNER JOIN doctors ON rendezvous.doctors_id_doctors = doctors.doctors_id
+        INNER JOIN patients ON rendezvous.patients_id_patients = patients.patients_id
+        WHERE rendezvous.rendezvous_id = $meet";
+        $query = $pdo->query($sql);
+        $result = $query->fetch();
+        return $result;
+    }
+    public function updateMeets(int $meet, $date, $hour, $description)
+    {
+        $pdo = parent::connectDb();
+        $sql = "UPDATE rendezvous SET rendezvous_date= :date ,rendezvous_hour= :hour , rendezvous_description=:description WHERE rendezvous_id = $meet";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':date', $date, PDO::PARAM_STR);
+        $query->bindValue(':hour', $hour, PDO::PARAM_STR);
+        $query->bindValue(':description', $description, PDO::PARAM_STR);
+        $query->execute();
+        
+    }
+    public function deleteMeets(int $meet)
+    {
+        $pdo = parent::connectDb();
+        $sql = "DELETE FROM rendezvous WHERE rendezvous_id = $meet";
+        $query = $pdo->query($sql);
+        $result = $query->fetch();
+        return $result;
+    }
 }
