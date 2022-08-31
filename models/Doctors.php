@@ -91,4 +91,36 @@ class Doctors extends DataBase
         $result = $query->fetchAll();
         return $result;
     }
+
+    public function getAOneDoctors(int $doctor)
+    {
+        $pdo = parent::connectDb();
+        $sql = "SELECT * FROM doctors 
+        INNER JOIN medicalspecialities ON doctors.medicalspecialities_id_medicalspecialities = medicalspecialities.medicalspecialities_id
+        WHERE doctors.doctors_id = $doctor";
+        $query = $pdo->query($sql);
+        $result = $query->fetch();
+        return $result;
+    }
+    public function updateDoctors(int $doctor,string $name,string $lastname,string $phoneNumber,string $mail, string $specialities)
+    {
+        $pdo = parent::connectDb();
+        $sql = "UPDATE doctors SET doctors_name=:name,doctors_lastname=:lastname,doctors_phonenumber=:phonrnumber,doctors_mail=:mail,medicalspecialities_id_medicalspecialities=:specialities  WHERE doctors_id = $doctor";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':name', $name, PDO::PARAM_STR);
+        $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+        $query->bindValue(':phonenumber', $phoneNumber, PDO::PARAM_STR);
+        $query->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $query->bindValue(':specialities', $specialities, PDO::PARAM_STR);
+        $query->execute();
+        
+    }
+    public function deleteDoctors(int $doctor)
+    {
+        $pdo = parent::connectDb();
+        $sql = "DELETE FROM doctors WHERE  doctors_id = $doctor";
+        $query = $pdo->query($sql);
+        $result = $query->fetch();
+        return $result;
+    }
 }
