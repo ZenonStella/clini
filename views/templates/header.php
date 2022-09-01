@@ -30,6 +30,16 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="dashboard.php">Accueil</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="listPatients.php">Voir les patients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="listDoctors.php">Voir les spécialistes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="listMeets.php">Voir les rendez-vous</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">Deconnection</a>
                         </li>

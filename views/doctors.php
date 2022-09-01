@@ -82,11 +82,15 @@ $actions = [
         <?php }
         if ($_GET['action'] == 3) { ?>
             <div class="rounded-4">
-                <h3 class="text-center my-5">333</h3>
-                <div class="px-5 mx-5">
-                    <p>Etes vous sûr de vouloir supprimer ce rendez-vous?</p>
-
-                </div>
+            <?php if (isset($_GET['id'])) { ?>
+                    <div class="px-5 mx-5">
+                        <p>Etes vous sûr de vouloir supprimer ce rendez-vous?</p>
+                        <form action="" method="get">
+                            <a href="delete.php?id=<?= $_GET['id'] ?>&clinic=2" class="btn btn-danger">Oui</a>
+                            <a class="btn btn-primary" href="listDoctors.php">Non</a>
+                        </form>
+                    </div>
+                <?php } ?>
             </div>
     <?php }
     } else {

@@ -46,7 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail = htmlspecialchars($_POST['mail']);
         $specialities = htmlspecialchars($_POST['specialities']);
         $doctor = htmlspecialchars($_GET['id']);
-        $doctorsObj = new doctors();
+        $doctorsObj = new Doctors();
+        $userObj = new Users();
+        $userObj->updateUsers($mail);
         $doctorsObj->updateDoctors($doctor, $name, $lastname, $phoneNumber, $mail,  $specialities);
         header('Location: dashboard.php');
     }

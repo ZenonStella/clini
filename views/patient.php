@@ -33,7 +33,7 @@ $actions = [
         if ($_GET['action'] == 2) { ?>
             <div class="rounded-4">
                 <?php if (isset($_GET['id'])) { ?>
-                    <p class="text-center my-5 h3">Modifier le profil du docteur<?= $patient['patients_lastname'] ?> <?= $patient['patients_name'] ?></p>
+                    <p class="text-center my-5 h3">Modifier le profil du patient <?= $patient['patients_lastname'] ?> <?= $patient['patients_firstname'] ?></p>
                     <div class="row justify-content-center">
                         <form class="col-lg-4 col-8 border border-success rounded shadow p-4" method="POST" action="" novalidate>
                             <div class="d-flex flex-column">
@@ -46,7 +46,7 @@ $actions = [
                                 <label for="firstname">Prénom
                                     <span class="text-danger fst-italic"><?= isset($errors['firstname']) ? $errors['firstname'] : '' ?></span>
                                 </label>
-                                <input value="<?= $patient['patients_name'] ?>" type="text" id="firstname" name="firstname" value="<?= $_POST['firstname'] ?? '' ?>" required>
+                                <input value="<?= $patient['patients_firstname'] ?>" type="text" id="firstname" name="firstname" value="<?= $_POST['firstname'] ?? '' ?>" required>
                             </div>
                             <div class="d-flex flex-column">
                                 <label for="phoneNumber">Numéro de contact
@@ -61,15 +61,10 @@ $actions = [
                                 <input value="<?= $patient['patients_mail'] ?>" type="email" id="mail" name="mail" value="<?= $_POST['mail'] ?? '' ?>" required>
                             </div>
                             <div class="d-flex flex-column">
-                                <label for="specialities">Specialité
-                                    <span class="text-danger fst-italic"><?= isset($errors['specialities']) ? $errors['specialities'] : '' ?></span>
+                                <label for="address">Adresse
+                                    <span class="text-danger fst-italic"><?= isset($errors['address']) ? $errors['address'] : '' ?></span>
                                 </label>
-                                <select name="specialities" id="">
-                                    <option value="">--- Selectionner une spécialité ---</option>
-                                    <?php foreach ($medicalespecialities as $medicalspecialitie) { ?>
-                                        <option value="<?= $medicalspecialitie['medicalspecialities_id'] ?>"><?= $medicalspecialitie['medicalspecialities_name'] ?></option>
-                                    <?php } ?>
-                                </select>
+                                <input value="<?= $patient['patients_address'] ?>" type="address" id="address" name="address" value="<?= $_POST['address'] ?? '' ?>" required>
                             </div>
                             <div class="text-center d-flex flex-column">
                                 <button class="btn btn-success mt-4">Ajouter</button>
@@ -81,11 +76,16 @@ $actions = [
         <?php }
         if ($_GET['action'] == 3) { ?>
             <div class="rounded-4">
-                <h3 class="text-center my-5">333</h3>
-                <div class="px-5 mx-5">
-                    <p>Etes vous sûr de vouloir supprimer ce rendez-vous?</p>
-
-                </div>
+                <?php if (isset($_GET['id'])) { ?>
+                    <h3 class="text-center my-5">333</h3>
+                    <div class="px-5 mx-5">
+                        <p>Etes vous sûr de vouloir supprimer ce rendez-vous?</p>
+                        <form action="" method="get">
+                            <a href="delete.php?id=<?= $_GET['id'] ?>&clinic=1" class="btn btn-danger">Oui</a>
+                            <a class="btn btn-primary" href="listPatients.php">Non</a>
+                        </form>
+                    </div>
+                <?php } ?>
             </div>
     <?php }
     } else {

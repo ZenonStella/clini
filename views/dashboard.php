@@ -5,8 +5,15 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 ?>
-<?php include('templates/header.php'); ?>
+<?php 
+require_once '../controllers/controller_dashboard.php';
+include('templates/header.php'); ?>
 <div class="p-3">
+    <?php 
+    //  if (condition) {
+    //     # code...
+    //  }
+    ?> 
     <p class="h2 text-center">Bienvenue <?= $_SESSION['user']['users_mail'] ?></p>
     <div class="row justify-content-evenly text-light py-5">
         <div class="col-lg-5 col-10 text-center">

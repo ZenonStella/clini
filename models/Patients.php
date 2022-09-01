@@ -125,7 +125,7 @@ class Patient extends DataBase
     public function updatePatients(int $patient,string $name,string $lastname,string $phoneNumber,string $mail, string $address)
     {
         $pdo = parent::connectDb();
-        $sql = "UPDATE patients SET patients_firstname=:name,patients_lastname=:lastname,patients_phonenumber=:phonrnumber,patients_mail=:mail,patients_address=:address WHERE patients_id = :id";
+        $sql = "UPDATE patients SET patients_firstname=:name, patients_lastname=:lastname,patients_phonenumber=:phonenumber,patients_mail=:mail,patients_address=:address WHERE patients_id = :id";
         $query = $pdo->prepare($sql);
         $query->bindValue(':name', $name, PDO::PARAM_STR);
         $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
@@ -140,9 +140,9 @@ class Patient extends DataBase
     public function deletePatients(int $patient)
     {
         $pdo = parent::connectDb();
-        $sql = "DELETE FROM patients WHERE  patients_id = $patient";
-        $query = $pdo->query($sql);
-        $result = $query->fetch();
-        return $result;
+        $sql = "DELETE FROM patients WHERE patients_id = :id";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id', $patient, PDO::PARAM_STR);
+        $query->execute();
     }
 }

@@ -165,9 +165,9 @@ class Meets extends DataBase
     public function deleteMeets(int $meet)
     {
         $pdo = parent::connectDb();
-        $sql = "DELETE FROM rendezvous WHERE rendezvous_id = $meet";
-        $query = $pdo->query($sql);
-        $result = $query->fetch();
-        return $result;
+        $sql = "DELETE FROM rendezvous WHERE rendezvous_id = :id";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':id', $meet, PDO::PARAM_STR);
+        $query->execute();
     }
 }

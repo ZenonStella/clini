@@ -35,9 +35,9 @@ $actions = [
             <div class="rounded-4">
                 <?php if (isset($_GET['id'])) { ?>
                     <p class="text-center my-5 h3">Modifier le rendez-vous de <?= $meet['patients_lastname'] ?> <?= $meet['patients_firstname'] ?><br>Avec le docteur <?= $meet['doctors_lastname'] ?> <?= $meet['doctors_name'] ?></p>
-                    
-                    <div class="row justify-content-center">  
-                      <form class="col-lg-5 col-10 border border-success rounded shadow p-4 mb-5" method="POST" action="" novalidate>
+
+                    <div class="row justify-content-center">
+                        <form class="col-lg-5 col-10 border border-success rounded shadow p-4 mb-5" method="POST" action="" novalidate>
                             <div class="d-flex flex-column">
                                 <label for="date">Date du rendez-vous
                                     <span class="text-danger fst-italic"><?= isset($errors['date']) ? $errors['date'] : '' ?></span>
@@ -66,11 +66,16 @@ $actions = [
         <?php }
         if ($_GET['action'] == 3) { ?>
             <div class="rounded-4">
-                <h3 class="text-center my-5">333</h3>
-                <div class="px-5 mx-5">
-                    <p>Etes vous sûr de vouloir supprimer ce rendez-vous?</p>
-                    
-                </div>
+                <?php if (isset($_GET['id'])) { ?>
+                    <h3 class="text-center my-5">333</h3>
+                    <div class="px-5 mx-5">
+                        <p>Etes vous sûr de vouloir supprimer ce rendez-vous?</p>
+                        <form action="" method="get">
+                            <a href="delete.php?id=<?= $_GET['id'] ?>&clinic=3" class="btn btn-danger">Oui</a>
+                            <a class="btn btn-primary" href="listMeets.php">Non</a>
+                        </form>
+                    </div>
+                <?php } ?>
             </div>
     <?php }
     } else {

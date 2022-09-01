@@ -10,9 +10,7 @@ include('templates/header.php');
             <table class="table table-danger table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Prénom</th>
+                        <th scope="col">Nom Prénom</th>
                         <th scope="col">Mail</th>
                         <th scope="col">Spécialité</th>
                         <th scope="col">Actions</th>
@@ -21,9 +19,7 @@ include('templates/header.php');
                 <tbody>
                     <?php foreach ($doctors as $doctor) { ?>
                         <tr>
-                            <th scope="row"><?= $doctor['doctors_id'] ?></th>
-                            <td><?= $doctor['doctors_lastname']?></td>
-                            <td><?= $doctor['doctors_name']?></td>
+                            <td><?= $doctor['doctors_lastname']?> <?= $doctor['doctors_name']?></td>
                             <td><?= $doctor['doctors_mail']?></td>
                             <td><?= $doctor['medicalspecialities_name']?></td>
                             <td>

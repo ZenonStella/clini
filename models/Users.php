@@ -115,5 +115,21 @@ class Users extends DataBase
 
         $query->execute();
     }
+    public function updateUsers(string $mail)
+    {
+        $pdo = parent::connectDb();
+        $sql = "UPDATE users SET users_mail=:mail, WHERE users_mail = :mail";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':mail', $mail, PDO::PARAM_STR);
 
+        $query->execute();
+    }
+    public function deleteUsers(int $doctor)
+    {
+        $pdo = parent::connectDb();
+        $sql = "DELETE FROM users WHERE users_mail = :mail";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':mail', $doctor, PDO::PARAM_STR);
+        $query->execute();
+    }
 }
