@@ -21,10 +21,14 @@ include('templates/header.php');
                     <?php foreach ($patients as $patient) { ?>
                         <tr>
                             <th scope="row"><?= $patient['patients_id'] ?></th>
-                            <td><?= $patient['patients_lastname']?></td>
-                            <td><?= $patient['patients_firstname']?></td>
-                            <td><?= $patient['patients_mail']?></td>
-                            <td><a href="" class="btn btn-warning btn-sm">+ d'info</a></td>
+                            <td><?= $patient['patients_lastname'] ?></td>
+                            <td><?= $patient['patients_firstname'] ?></td>
+                            <td><?= $patient['patients_mail'] ?></td>
+                            <td>
+                                <a href="patient.php?action=1&id=<?= $patient['patients_id'] ?>" class="btn btn-warning btn-sm">+ d'info</a>
+                                <a href="patient.php?action=2&id=<?= $patient['patients_id'] ?>" class="btn btn-primary btn-sm">Modifier</a>
+                                <a href="patient.php?action=3&id=<?= $patient['patients_id'] ?>" class="btn btn-danger btn-sm">Suprrimer</a>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>

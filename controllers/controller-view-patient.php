@@ -5,12 +5,9 @@ if (!isset($_SESSION['user'])) {
 }
 require_once '../config.php';
 require_once '../models/Database.php';
-require_once '../models/Doctors.php';
-require_once '../models/MedicalSpecialities.php';
-$medicalespecialitiesO = new medicalSpecialities();
-$medicalespecialities = $medicalespecialitiesO->getAllMedicalSpecialities();
-$doctorsO = new Doctors();
-$doctor = $doctorsO->getAOneDoctors($_GET['id']);
+require_once '../models/Patients.php';
+$patientsO = new Patient();
+$patient = $patientsO->getAOnePatients($_GET['id']);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $regexName = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,30}$/";
     $errors = [];
@@ -34,9 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors['mail'] = '*mail obligatoire';
         }
     }
-    if (isset($_POST['specialities'])) {
-        if (empty($_POST['specialities'])) { // si c'est vide
-            $errors['specialities'] = '*specialities obligatoire';
+    if (isset($_POST['address'])) {
+        if (empty($_POST['address'])) { // si c'est vide
+            $errors['address'] = '*address obligatoire';
         }
     }
     if (count($errors) == 0) {
@@ -44,10 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $lastname = htmlspecialchars($_POST['lastname']);
         $phoneNumber = htmlspecialchars($_POST['phoneNumber']);
         $mail = htmlspecialchars($_POST['mail']);
-        $specialities = htmlspecialchars($_POST['specialities']);
-        $doctor = htmlspecialchars($_GET['id']);
-        $doctorsObj = new doctors();
-        $doctorsObj->updateDoctors($doctor, $name, $lastname, $phoneNumber, $mail,  $specialities);
+        $address = htmlspecialchars($_POST['address']);
+        $patient = htmlspecialchars($_GET['id']);
+        $patientsO->updatepatients($patient, $name, $lastname, $phoneNumber, $mail,  $address);
         header('Location: dashboard.php');
     }
 }

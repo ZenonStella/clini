@@ -113,4 +113,36 @@ class Patient extends DataBase
         $result = $query->fetchAll();
         return $result;
     }
+    public function getAOnePatients(int $patient)
+    {
+        $pdo = parent::connectDb();
+        $sql = "SELECT * FROM patients 
+        WHERE patients_id = $patient";
+        $query = $pdo->query($sql);
+        $result = $query->fetch();
+        return $result;
+    }
+    public function updatePatients(int $patient,string $name,string $lastname,string $phoneNumber,string $mail, string $address)
+    {
+        $pdo = parent::connectDb();
+        $sql = "UPDATE patients SET patients_firstname=:name,patients_lastname=:lastname,patients_phonenumber=:phonrnumber,patients_mail=:mail,patients_address=:address WHERE patients_id = :id";
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':name', $name, PDO::PARAM_STR);
+        $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+        $query->bindValue(':phonenumber', $phoneNumber, PDO::PARAM_STR);
+        $query->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $query->bindValue(':address', $address, PDO::PARAM_STR);        
+        $query->bindValue(':id', $patient, PDO::PARAM_STR);
+
+        $query->execute();
+        
+    }
+    public function deletePatients(int $patient)
+    {
+        $pdo = parent::connectDb();
+        $sql = "DELETE FROM patients WHERE  patients_id = $patient";
+        $query = $pdo->query($sql);
+        $result = $query->fetch();
+        return $result;
+    }
 }
